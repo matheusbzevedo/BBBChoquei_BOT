@@ -9,32 +9,14 @@ const api = require('./config/axios');
 const cors = require('cors');
 const bot = new Telegraf(keys.telegram.token);
 const cron = require('cron').CronJob;
-const { response } = require('express');
+const { participantes } = require('./participantes.json');
+const participantesIds = participantes.map(participante => participante.id);
 
 app.use(express.json());
 app.use(cors());
 app.get('/', (request, response) => {
   return response.status(200).json({ bot: 'ON 🚀' });
 })
-
-const participantes = [
-  'lais',
-  'luciano',
-  'jessilane',
-  'eli',
-  'eslovenia',
-  'lucas',
-  'barbara',
-  'arthuraguiar',
-  'rodrigo',
-  'natalia',
-  'vinicius',
-  'scooby',
-  'bruna'
-];
-
-let brunou = 0;
-let flamengo = 0;
 
 let lastTweet = "";
 
@@ -43,40 +25,34 @@ Notícias sobre BBB vindo da Choquei
 `));
 
 bot.help((ctx) => ctx.reply(`
-/vasco - fala o que todos somos
-/nome do participante - último tweet sobre BBB
-/bruno - quantas vezes o bruno brunou
-/flamengo - quantas vezes o bruno falou do flamengo neste recipiente
+/lista - exibe lista de participantes com informações
+/last - último tweet da @choquei
+/participante - informações como nome, instagram e se foi eliminado
+
+https://github.com/matheusbzevedo/BBBChoquei_BOT
 `));
 
-bot.command('participantes', (ctx) => {
+bot.command('lista', (ctx) => {
   let texto = "Participantes: \n\n";
 
   participantes.map(participante => {
-    texto += `/${participante} \n`;
+    texto += `/${participante.id} - ${participante.nome} - ${participante.instagram} \n\n`;
   });
 
   ctx.reply(texto);
 });
 
-bot.command('vasco', (ctx) => ctx.reply('AQUI É VASCO MESMO!'));
+bot.command(participantesIds, (ctx) => {
+  const id = ctx.update.message.text.split('/')[1];
+  const participante = participantes.filter(p => p.id === id)[0];
+  let texto = "Participante \n\n";
+  texto += `Nome: ${participante.nome}\n`;
+  texto += `Tipo: ${participante.tipo}\n`;
+  texto += `Instagram: ${participante.instagram}\n`;
+  texto += `Cidade: ${participante.cidade}\n`;
+  texto += `Eliminado: ${isEliminado(participante.eliminado)}\n`;
 
-bot.command(participantes, (ctx) => {
-  const nome = ctx.update.message.text.split('/')[1];
-
- ctx.reply(`Você quer saber por ${nome}, logo logo teremos novidades!`);
-});
-
-bot.command('bruno', (ctx) => {
-  ++brunou;
-
-  ctx.reply(`Bruneco brunou ${brunou}`);
-});
-
-bot.command('flamengo', (ctx) => {
-  ++flamengo;
-
-  ctx.reply(`Foi a ${flamengo} vez que o Bruno falou do Flamengo`);
+  ctx.reply(texto);
 });
 
 bot.command('last', (ctx) => {
@@ -106,6 +82,10 @@ function sendTweet() {
     bot.telegram.sendMessage(-1001351415122, data[0].text);
   })
   .catch(error => console.error(error))
+}
+
+function isEliminado(eliminado) {
+  return eliminado ? "Sim" : "Não";
 }
 
 server.listen(port, () => console.log(`Server listening on port: ${port}`));

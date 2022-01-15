@@ -1,0 +1,164 @@
+{
+  "participantes": [
+    {
+      "id": "lais",
+      "nome": "Lais",
+      "tipo": "Pipoca",
+      "eliminado": false,
+      "instagram": "instagram.com/dra.laiscaldass",
+      "cidade": "Crixás - GO"
+    },
+    {
+      "id": "luciano",
+      "nome": "Luciano",
+      "tipo": "Pipoca",
+      "eliminado": false,
+      "instagram": "instagram.com/lucianoestevan",
+      "cidade": "Florianópolis - SC"
+    },
+    {
+      "id": "jessilane",
+      "nome": "Jessilane",
+      "tipo": "Pipoca",
+      "eliminado": false,
+      "instagram": "instagram.com/natossabrejessi",
+      "cidade": "Valparaíso de Goiás - GO"
+    },
+    {
+      "id": "eliezer",
+      "nome": "Eliezer",
+      "tipo": "Pipoca",
+      "eliminado": false,
+      "instagram": "instagram.com/eusouoeli",
+      "cidade": "Volta Redonda - RJ"
+    },
+    {
+      "id": "eslovenia",
+      "nome": "Eslôvenia",
+      "tipo": "Pipoca",
+      "eliminado": false,
+      "instagram": "instagram.com/eslomarques",
+      "cidade": "Caruaru - PE"
+    },
+    {
+      "id": "lucas",
+      "nome": "Lucas",
+      "tipo": "Pipoca",
+      "eliminado": false,
+      "instagram": "instagram.com/",
+      "cidade": "Vila Velha - ES"
+    },
+    {
+      "id": "barbara",
+      "nome": "Bárbara",
+      "tipo": "Pipoca",
+      "eliminado": false,
+      "instagram": "instagram.com/",
+      "cidade": "Novo Hamburgo - RS"
+    },
+    {
+      "id": "arthuraguiar",
+      "nome": "Arthur Aguiar",
+      "tipo": "Camarote",
+      "eliminado": false,
+      "instagram": "instagram.com/",
+      "cidade": "Rio de Janeiro - RJ"
+    },
+    {
+      "id": "rodrigo",
+      "nome": "Rodrigo",
+      "tipo": "Pipoca",
+      "eliminado": false,
+      "instagram": "instagram.com/rodrigo.mussi",
+      "cidade": "São José dos Campos - SP"
+    },
+    {
+      "id": "natalia",
+      "nome": "Natália",
+      "tipo": "Pipoca",
+      "eliminado": false,
+      "instagram": "instagram.com/deonaty_",
+      "cidade": "Belo Horizonte - MG"
+    },
+    {
+      "id": "vinicius",
+      "nome": "Vinicius",
+      "tipo": "Pipoca",
+      "eliminado": false,
+      "instagram": "instagram.com/vyniof",
+      "cidade": "Crato - CE"
+    },
+    {
+      "id": "pedroscooby",
+      "nome": "Pedro Scooby",
+      "tipo": "Camarote",
+      "eliminado": false,
+      "instagram": "instagram.com/pedroscooby",
+      "cidade": "Rio de Janeiro - RJ"
+    },
+    {
+      "id": "brunagoncalves",
+      "nome": "Bruna Gonçalves",
+      "tipo": "Camarote",
+      "eliminado": false,
+      "instagram": "instagram.com/",
+      "cidade": "Nilópolis - RJ"
+    },
+    {
+      "id": "pauloandrecamilo",
+      "nome": "Paulo André Camilo",
+      "tipo": "Camarote",
+      "eliminado": false,
+      "instagram": "instagram.com/iampauloandre",
+      "cidade": "Santo André - SP"
+    },
+    {
+      "id": "maria",
+      "nome": "Maria",
+      "tipo": "Camarote",
+      "eliminado": false,
+      "instagram": "instagram.com/",
+      "cidade": "Rio de Janeiro - RJ"
+    },
+    {
+      "id": "jadepicon",
+      "nome": "Jade Picon",
+      "tipo": "Camarote",
+      "eliminado": false,
+      "instagram": "instagram.com/jadepicon",
+      "cidade": "São Paulo - SP"
+    },
+    {
+      "id": "douglassilva",
+      "nome": "Douglas Silva",
+      "tipo": "Camarote",
+      "eliminado": false,
+      "instagram": "instagram.com/dsilvaoficial",
+      "cidade": "Rio de Janeiro - RJ"
+    },
+    {
+      "id": "linndaquebrada",
+      "nome": "Linn da Quebrada",
+      "tipo": "Camarote",
+      "eliminado": false,
+      "instagram": "instagram.com/linndaquebrada",
+      "cidade": "São Paulo - SP"
+    },
+    {
+      "id": "thiagoabravanel",
+      "nome": "Thiago Abravanel",
+      "tipo": "Camarote",
+      "eliminado": false,
+      "instagram": "instagram.com/tiagoabravanel",
+      "cidade": "São Paulo - SP"
+    },
+    {
+      "id": "naiaraazevedo",
+      "nome": "Naiara Azevedo",
+      "tipo": "Camarote",
+      "eliminado": false,
+      "instagram": "instagram.com/naiaraazevedo",
+      "cidade": "Farol - PR"
+    }
+  ]
+}
