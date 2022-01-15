@@ -49,14 +49,15 @@ bot.command('lista', (ctx) => {
 });
 
 bot.command(participantesIds, (ctx) => {
-  const id = ctx.update.message.text.split('/')[1];
+  const id = ctx.update.message.text.split('/')[1]?.split('@')[0];
   const participante = participantes.filter(p => p.id === id)[0];
   let texto = "Participante \n\n";
-  texto += `Nome: ${participante.nome}\n`;
-  texto += `Tipo: ${participante.tipo}\n`;
-  texto += `Instagram: ${participante.instagram}\n`;
-  texto += `Cidade: ${participante.cidade}\n`;
-  texto += `Eliminado: ${isEliminado(participante.eliminado)}\n`;
+
+  texto += `Nome: ${participante?.nome}\n`;
+  texto += `Tipo: ${participante?.tipo}\n`;
+  texto += `Instagram: ${participante?.instagram}\n`;
+  texto += `Cidade: ${participante?.cidade}\n`;
+  texto += `Eliminado: ${isEliminado(participante?.eliminado)}\n`;
 
   ctx.reply(texto);
 });
