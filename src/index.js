@@ -11,11 +11,17 @@ const bot = new Telegraf(keys.telegram.token);
 const cron = require('cron').CronJob;
 const { participantes } = require('./participantes.json');
 const participantesIds = participantes.map(participante => participante.id);
+const package = require('./../package.json');
 
 app.use(express.json());
 app.use(cors());
 app.get('/', (request, response) => {
-  return response.status(200).json({ bot: 'ON 🚀' });
+  return response.status(200).json({
+    bot: 'ON 🚀',
+    name: package.name,
+    repository: package.repository,
+    version: package.version
+  });
 })
 
 let lastTweet = "";
