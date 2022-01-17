@@ -25,6 +25,7 @@ app.get('/', (request, response) => {
 })
 
 let lastTweet = "";
+let botStatus = true;
 
 bot.start((ctx) => ctx.reply(`
 Notícias sobre BBB vindo da Choquei
@@ -34,6 +35,8 @@ bot.help((ctx) => ctx.reply(`
 /lista - exibe lista de participantes com informações
 /last - último tweet da @choquei
 /participante - informações como nome, instagram e se foi eliminado
+/on - liga info do bot sempre que ouver um tweet novo
+/off - desliga info do bot sempre que ouver um tweet novo
 
 https://github.com/matheusbzevedo/BBBChoquei_BOT
 `));
@@ -70,11 +73,32 @@ bot.command('last', (ctx) => {
     ctx.reply(data[0].text);
   })
   .catch(error => console.error(error))
-})
+});
+
+bot.command(['on', 'off'], (ctx) => {
+  const text = ctx.message.text;
+
+  if (text.includes('off')) {
+    if (botStatus === false) return ctx.reply('Bot já está desligado!');
+
+    botStatus = !botStatus;
+
+    return ctx.reply('Bot desligado!');
+  }
+
+  if (text.includes('on')) {
+    if (botStatus === true) return ctx.reply('Bot já está ligado!');
+
+    botStatus = !botStatus;
+
+    return ctx.reply('Bot ligado!');
+  }
+});
 
 bot.launch();
 
 new cron('* * * * 0-6', () => {
+  if (!botStatus) return;
   sendTweet();
 }).start();
 
