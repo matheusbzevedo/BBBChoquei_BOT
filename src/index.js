@@ -26,6 +26,7 @@ app.get('/', (request, response) => {
 
 let lastTweet = "";
 let botStatus = true;
+const chatId = -1001351415122;
 
 bot.start((ctx) => ctx.reply(`
 Notícias sobre BBB vindo da Choquei
@@ -35,8 +36,9 @@ bot.help((ctx) => ctx.reply(`
 /lista - exibe lista de participantes com informações
 /last - último tweet da @choquei
 /participante - informações como nome, instagram e se foi eliminado
-/on - liga info do bot sempre que ouver um tweet novo
-/off - desliga info do bot sempre que ouver um tweet novo
+/status - mostra se o bot está ativo ou desligado no grupo
+/on - liga info do bot sempre que ouver um tweet novo (específico para o grupo dos cornos)
+/off - desliga info do bot sempre que ouver um tweet novo (específico para o grupo dos cornos)
 
 https://github.com/matheusbzevedo/BBBChoquei_BOT
 `));
@@ -52,6 +54,8 @@ bot.command('lista', (ctx) => {
 });
 
 bot.command(participantesIds, (ctx) => {
+  if (!botStatus) return;
+
   const id = ctx.update.message.text.split('/')[1]?.split('@')[0];
   const participante = participantes.filter(p => p.id === id)[0];
   let texto = "Participante \n\n";
@@ -66,6 +70,8 @@ bot.command(participantesIds, (ctx) => {
 });
 
 bot.command('last', (ctx) => {
+  if (!botStatus) return;
+
   api.get().then(response => {
     const { data } = response.data;
 
@@ -75,8 +81,13 @@ bot.command('last', (ctx) => {
   .catch(error => console.error(error))
 });
 
+bot.command('status', (ctx) => ctx.reply(`O bot está: ${botStatus ? 'Ligado.' : 'Desligado.'}`));
+
 bot.command(['on', 'off'], (ctx) => {
   const text = ctx.message.text;
+  const { id } = ctx.message.chat;
+
+  if (id !== chatId) return;
 
   if (text.includes('off')) {
     if (botStatus === false) return ctx.reply('Bot já está desligado!');
@@ -110,7 +121,7 @@ function sendTweet() {
 
     lastTweet = data[0].id;
 
-    bot.telegram.sendMessage(-1001351415122, data[0].text);
+    bot.telegram.sendMessage(chatId, data[0].text);
   })
   .catch(error => console.error(error))
 }
